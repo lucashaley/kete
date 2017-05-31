@@ -1,0 +1,70 @@
+<% content_for :title do %>
+<%= @guest_lecturer.full_name %>
+<% end %>
+<% content_for :subtitle do %>
+<%= mail_to @guest_lecturer.email %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-6 medium-6 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Contact Details</h4>
+          </div>
+          <div class="panel-section">
+            <strong>Cell:</strong> <%= @guest_lecturer.cell %>
+            <br />
+            <strong>Website:</strong> <%= link_to @guest_lecturer.website, @guest_lecturer.website %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Visits</h4>
+          </div>
+          <div class="panel-button">
+            <%= link_to "Create New Visit", new_guest_lecturer_guest_visit_path(@guest_lecturer) %>
+          </div>
+          <div class="panel-section">
+            <ul>
+              <% @guest_lecturer.guest_visits.each do |visit| %>
+              <li><%= visit.course.code_short %>: <%= visit.start.strftime('%x') %></li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-6 medium-6 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Face</h4>
+      </div>
+      <div class="panel-section">
+        <%= image_tag(@guest_lecturer.image_url.to_s) %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-12 columns">
+    <%= link_to 'Edit', edit_guest_lecturer_path(@guest_lecturer), class: 'button postfix' %>
+  </div>
+</div>
+
+<%= link_to 'Edit', edit_guest_lecturer_path(@guest_lecturer) %> |
+<%= link_to 'Back', guest_lecturers_path %>

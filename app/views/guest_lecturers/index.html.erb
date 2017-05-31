@@ -1,0 +1,19 @@
+<% content_for :title do %>
+Guest Lecturers
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-6 large-offset-6 medium-6 medium-offset-6 small-12">
+    <%= link_to 'New Guest lecturer', new_guest_lecturer_path, class: 'button postfix' %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+    <%= render @guest_lecturers %>
+    </ul>
+  </div>
+</div>

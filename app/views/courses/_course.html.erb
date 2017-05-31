@@ -1,0 +1,29 @@
+<li>
+<div class="card">
+  <div class="card-divider">
+    <%=  %>
+  </div>
+  <%= image_tag(course.image_url(:thumb).to_s) %>
+  <div class="card-title">
+    <%= link_to "#{course.code}: #{course.short_title}", course_path(course) %>
+  </div>
+  <div class="card-description">
+    <%= truncate(course.description, :length => 120, :separator => ' ') %>
+  </div>
+  <hr>
+  <div class="card-section">
+    <h6>Offerings</h6>
+    <ul>
+      <% course.offerings.each do |offering| %>
+      <li><%= link_to "#{offering.semester.code}:  #{offering.instructor.full_name}", offering_path(offering) %></li>
+      <% end %>
+    </ul>
+  </div>
+  <hr>
+  <div class="card-section">
+    <%= link_to 'Edit', edit_course_path(course) %> | <%= link_to 'Destroy', course_path(course),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+</li>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Te Kete: <%= content_for?(:title) ? yield(:title) : "Cmp" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Cmp" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => 'reload' %>
+    <%= stylesheet_link_tag 'http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css', media: "all", "data-turbolinks-track" => "reload" %>
+    <%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans:800|Share+Tech+Mono', media: "all", "data-turbolinks-track" => "reload" %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => 'reload' %>
+    <!-- annotorious image annotations -->
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+      <div class="row">
+        <div class="large-8 columns">
+          <h1><%= yield(:title) %></h1>
+        </div>
+        <div class="large-4 columns">
+          <h2><%= yield(:subtitle) %></h2>
+      </div>
+    </header>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+    </main>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="row full-width">
+        <div class="small-12 medium-3 large-4 columns">
+          <i class="fi-laptop"></i>
+          <p>Kete is a digital resource for all things School of Music and Creative Media Production. Herein lies the stuff.</p>
+        </div>
+        <div class="small-12 medium-3 large-4 columns">
+          <i class="fi-clipboard-pencil"></i>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit impedit consequuntur at! Amet sed itaque nostrum, distinctio eveniet odio, id ipsam fuga quam minima cumque nobis veniam voluptates deserunt!</p>
+        </div>
+        <div class="small-6 medium-3 large-2 columns">
+          <h4>Work With Me</h4>
+          <ul class="footer-links">
+            <li><a href="#">What I Do</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">FAQ's</a></li>
+          <ul>
+        </div>
+        <div class="small-6 medium-3 large-2 columns">
+          <h4>Follow Me</h4>
+          <ul class="footer-links">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Dribbble</a></li>
+          <ul>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

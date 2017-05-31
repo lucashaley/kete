@@ -1,0 +1,17 @@
+<li>
+<div class="card">
+  <div class="card-section">
+    <h4><%= link_to lab.name, lab_path(lab) %></h4>
+  </div>
+  <div class="card-section">
+    <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2 boxlist-ul">
+    <%= render lab.computers %>
+    </ul>
+  </div>
+  <div class="card-divider">
+    <%= link_to 'Edit', edit_lab_path(lab) %> | <%= link_to 'Destroy', lab_path(lab),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>
+</li>

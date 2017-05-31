@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h3><%= @session.day_of_week %>, <%= @session.time_start.strftime("%I:%M %p") %> - <%= @session.time_end.strftime("%I:%M %p") %></h3>
+<h4><%= @session.lab.name %></h4>
+
+<p>
+  <strong>Workshop:</strong>
+  <%= @session.workshop.offering.title %>
+</p>
+
+<%= link_to 'Edit', edit_session_path(@session) %> |
+<%= link_to 'Back', sessions_path %>

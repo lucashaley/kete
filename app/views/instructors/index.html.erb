@@ -1,0 +1,9 @@
+<% content_for :title do %>
+Instructors
+<% end %>
+
+<%= link_to 'New instructor', new_instructor_path %>
+
+<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+<%= render @instructors %>
+</ul>

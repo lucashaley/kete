@@ -1,0 +1,288 @@
+// import the CSS framework
+@import "foundation";
+@import 'foundation-datetimepicker';
+
+$background-color: #eee;
+$navigation-color: #333;
+$button-color: #aac;
+$button-hover-color: #bbd;
+$info-hover-color: #555;
+$line-color: #333;
+$list-item-color: #ddd;
+$list-item-alternate-color: #ccc;
+$footer-text-color: #fff;
+$serif-family: 'Merriweather', serif;
+$sans-family: 'Merriweather Sans', sans-serif;
+
+// override for the 'Home' navigation link
+.top-bar .name {
+  font-size: rem-calc(13);
+  line-height: 45px; }
+.top-bar .name a {
+  font-weight: normal;
+  color: white;
+  padding: 0 15px; }
+
+// THESE ARE EXAMPLES YOU CAN MODIFY
+// create mixins using Foundation classes
+@mixin twelve-columns {
+  @extend .small-12;
+  @extend .columns;
+  }
+@mixin six-columns-centered {
+  @extend .small-6;
+  @extend .columns;
+  @extend .text-center;
+  }
+// create your own classes
+// to make views framework-neutral
+.column {
+  @include six-columns-centered;
+  }
+.form {
+  @include grid-column(6);
+  }
+.form-centered {
+  @include six-columns-centered;
+  }
+.submit {
+  @extend .button;
+  @extend .radius;
+  }
+// apply styles to HTML elements
+// to make views framework-neutral
+main {
+  @include twelve-columns;
+  background-color: $background-color;
+  font-family: $serif-family;
+  }
+section {
+  @extend .row;
+  margin-top: 20px;
+  }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $sans-family;
+  }
+
+h1 {
+  font-size: 1.825rem !important;
+}
+h2 {
+  font-size: 1.125rem !important;
+  font-style: italic;
+}
+
+.footer {
+  background-color: $navigation-color;
+  padding: 4rem 4rem;
+  text-align: center;
+  color: $footer-text-color;
+  i {
+    font-size: 60px;
+  }
+}
+
+.footer {
+  h4 {
+    color: $footer-text-color;
+    font-size: 1em;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 2.5rem;
+    margin-bottom: 10px;
+  }
+  p, a {
+    font-weight: 300;
+    font-size: .8em;
+    color: $footer-text-color;
+  }
+}
+
+@media only screen and (min-width: 40.063em) {
+.footer {
+  .columns:nth-child(n+2) {
+    border-left: 1px solid scale-color($footer-text-color, $lightness: -30%);
+    min-height: 140px;
+  }
+ }
+}
+
+.footer-links {
+  list-style-type: none;
+  li {
+    margin-top: .5em;
+  }
+}
+
+.panel {
+  padding: 0 0 4px 0 !important;
+  background-color: $line-color;
+}
+.panel-title {
+  background-color: $line-color;
+  color: $background-color;
+  // height: 30px;
+  padding: 0.75rem 1.25rem;
+}
+.panel-title h4 {
+  color: inherit;
+}
+.panel-button {
+  // padding: 1.25rem;
+  background-color: $button-color;
+  font-size: 1.125rem;
+  font-family: $sans-family;
+}
+.panel-button a {
+  color: $background-color !important;
+  display: inline-block;
+  padding: 1.125rem;
+  width: 100%;
+  height: 100%;
+}
+.panel-button a:hover {
+  background-color: $button-hover-color;
+}
+.panel-section {
+  padding: 1.25rem;
+  background-color: $background-color;
+}
+.panel-photo {
+  padding: 0px;
+}
+
+.card {
+  border: 1px solid $line-color;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+  border-radius: 0.2rem;
+  overflow: hidden;
+}
+.card span {
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left: 0;
+
+  z-index: 1;
+
+  /* fixes overlap error in IE7/8,
+     make sure you have an empty gif */
+  background-image: url('empty.gif');
+}
+.card-divider {
+  position: relative;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: $line-color;
+  color: $background-color;
+  height: 20px;
+}
+.card-divider a {
+  color: white !important;
+}
+// .card-image {
+//   box-shadow: inset 0px 0px 20px rgba(0,0,0,0.9);
+//   background-color: transparent !important;
+//   position: relative;
+//   z-index: 1;
+// }
+// .card-image img {
+//   position: relative;
+//   z-index: -1;
+//   background-color: transparent !important;
+// }
+.card-section {
+  padding: 0.5rem 0.5rem 0.875rem;
+}
+
+.card-title {
+  color: white !important;
+  background-color: $line-color;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: $sans-family;
+}
+.card-title a {
+  color: white !important;
+  display: inline-block;
+  padding: 1.125rem;
+  width: 100%;
+  height: 100%;
+}
+.card-title a:hover {
+  color: $button-color !important;
+  background-color: $info-hover-color;
+}
+.card-description {
+  padding: 0.5rem 0.5rem 0.875rem;
+}
+.card-button {
+  // padding: 1.25rem;
+  background-color: $button-color;
+  font-size: 1.125rem;
+  font-family: $sans-family;
+}
+.card-button a {
+  color: $background-color !important;
+  display: inline-block;
+  padding: 1.125rem;
+  width: 100%;
+  height: 100%;
+}
+.card-button a:hover {
+  background-color: $button-hover-color;
+}
+
+ul.boxlist {
+  list-style: none;
+  width: 100%;
+  height: 100%;
+  margin-left: 0px !important;
+}
+
+ul.boxlist li {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+ul.boxlist li:nth-child(odd) {
+    background: $list-item-color;
+}
+ul.boxlist li:nth-child(even) {
+    background: $list-item-alternate-color;
+}
+
+ul.boxlist li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  padding: 12px;
+  font-family: $sans-family;
+  font-size: 1rem;
+}
+//
+// .boxlist-ul li {
+//   margin: 0 auto !important;
+//   padding: 4px 10px !important;
+// }
+// .boxlist{
+//   border: 1px solid $line-color;
+//   margin: 0;
+//   padding: 0.5rem;
+//   overflow: hidden;
+// }
+// .boxlist-section {
+//   font-size: 1.1rem;
+//   font-weight: bold;
+//   font-family: 'Share Tech Mono', monospace;
+// }
+
+.pdp-student {
+  font-size: 1.1rem;
+  color: #300;
+}

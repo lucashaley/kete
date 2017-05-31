@@ -1,0 +1,111 @@
+<% content_for :title do %>
+PDP Review: <%= @pdp.student.full_name %>
+<% end %>
+<% content_for :subtitle do %>
+<%= @pdp.student.email  %>
+<% end %>
+
+<%= form_for(@pdp, url: review_complete_pdp_path(@pdp), html: {method: "patch"}) do |f| %>
+<div class="row">
+  <div class="large-12 columns">
+  <% if @pdp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pdp.errors.count, "error") %> prohibited this pdp from being saved:</h2>
+
+      <ul>
+      <% @pdp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h3>
+      This is the PDP review form.
+    </h3>
+    <p>
+      During your conformed appointment with the student, please review their report, and add your responses.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 medium-6 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Review of Prior Engagement</h4>
+      </div>
+      <div class="panel-section">
+        <h5>Student Response</h5>
+        <p class="pdp-student">
+          <%= @pdp.review_student %>
+        </p>
+        <h5>Staff Notes</h5>
+        <%= f.text_area :review_staff, :size => "60%x10%" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="large-6 medium-6 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Looking Forward</h4>
+      </div>
+      <div class="panel-section">
+        <h5>Student Response</h5>
+        <p class="pdp-student">
+          <%= @pdp.preview_student %>
+        </p>
+        <h5>Staff Notes</h5>
+        <%= f.text_area :preview_staff, :size => "60%x10%" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Other Notes and Comments</h4>
+      </div>
+      <div class="panel-section">
+        <p class="pdp-student">
+          <%= @pdp.notes %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Confirmation</h4>
+      </div>
+      <div class="row">
+        <div class="large-4 medium-5 small-10 columns">
+          <div class="panel-section">
+            <p>This checkbox acknowleges that both parties, staff and student, have contributed to this PDP review and agree with the contents therein.</p>
+          </div>
+        </div>
+        <div class="large-2 medium-1 small-2 columns">
+          <div class="panel-section">
+            <%= f.check_box :agreed %>
+          </div>
+        </div>
+        <div class="medium-6 small-12 columns">
+          <div class="panel-section">
+            <%= f.submit class: 'button postfix' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

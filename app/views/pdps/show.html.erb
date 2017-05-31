@@ -1,0 +1,89 @@
+<% content_for :title do %>
+<%= @pdp.student.full_name %>
+<% end %>
+<% content_for :subtitle do %>
+With <%= @pdp.instructor.full_name %> on <%= @pdp.appointment.strftime("%-d/%-m/%Y") %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<% if @pdp.scan? %>
+
+<div class="large-6 columns">
+  <embed src="<%= @pdp.scan.url %>" width="630px" height="891px" type='application/pdf' />
+</div>
+
+<% else %>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Student Review</h4>
+          </div>
+          <div class="panel-section">
+            <%= @pdp.review_student %>
+          </div>
+        </div>
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Staff Review</h4>
+          </div>
+          <div class="panel-section">
+            <%= @pdp.review_staff %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Student Preview</h4>
+          </div>
+          <div class="panel-section">
+            <%= @pdp.preview_student %>
+          </div>
+        </div>
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Staff Preview</h4>
+          </div>
+          <div class="panel-section">
+            <%= @pdp.preview_staff %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Notes</h4>
+      </div>
+      <div class="panel-section">
+        <%= @pdp.notes %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+
+<%= link_to 'Edit', edit_pdp_path(@pdp) %> |
+<%= link_to 'Back', pdps_path %>

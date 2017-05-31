@@ -1,0 +1,65 @@
+<% content_for :title do %>
+<%= @instructor.full_name %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Instructor biography</h4>
+          </div>
+          <div class="panel-section">
+            <%= @instructor.biography %>
+          </div>
+        </div>
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Offerings</h4>
+          </div>
+          <ul class="boxlist">
+            <%= render partial: "offerings/offering_list", collection: @instructor.offerings, as: :offering %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Face</h4>
+          </div>
+          <div class="panel-photo">
+            <%= image_tag(@instructor.image_url(:large).to_s) %>
+          </div>
+        </div>
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Issues</h4>
+          </div>
+          <ul class="boxlist">
+            <%= render partial: "issues/issue_list", collection: @instructor.issues, as: :issue %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>

@@ -1,0 +1,51 @@
+<% content_for :title do %>
+PDPs
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h1>PDPs</h1>
+<h3>Please note that you should never create a PDP here. Instead create it from the student.</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Appointment</th>
+      <th>Instructor</th>
+      <th>Review student</th>
+      <th>Review staff</th>
+      <th>Preview student</th>
+      <th>Preview staff</th>
+      <th>Notes</th>
+      <th>Agreed</th>
+      <th>Acuity Id</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pdps.each do |pdp| %>
+      <tr>
+        <td><%= pdp.student.full_name %></td>
+        <td><%= pdp.appointment %></td>
+        <td><%= link_to pdp.instructor.full_name, instructor_path(pdp.instructor) %></td>
+        <td><%= pdp.review_student %></td>
+        <td><%= pdp.review_staff %></td>
+        <td><%= pdp.preview_student %></td>
+        <td><%= pdp.preview_staff %></td>
+        <td><%= pdp.notes %></td>
+        <td><%= pdp.agreed %></td>
+        <td><%= pdp.acuity_id %></td>
+        <td><%= link_to 'Review', review_pdp_path(pdp) %></td>
+        <td><%= link_to 'Show', pdp %></td>
+        <td><%= link_to 'Edit', edit_pdp_path(pdp) %></td>
+        <td><%= link_to 'Destroy', pdp, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pdp', new_pdp_path %>

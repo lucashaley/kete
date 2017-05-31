@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @lesson.course %>
+</p>
+
+<p>
+  <strong>Week:</strong>
+  <%= @lesson.week %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lesson.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lesson.description %>
+</p>
+
+<p>
+  <strong>Rationale:</strong>
+  <%= @lesson.rationale %>
+</p>
+
+<p>
+  <strong>Requisites:</strong>
+  <%= @lesson.requisites %>
+</p>
+
+<p>
+  <strong>Directed study:</strong>
+  <%= @lesson.directed_study %>
+</p>
+
+<p>
+  <strong>Reading:</strong>
+  <%= @lesson.reading %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

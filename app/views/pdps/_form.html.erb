@@ -1,0 +1,57 @@
+<%= form_for(@pdp) do |f| %>
+  <% if @pdp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pdp.errors.count, "error") %> prohibited this pdp from being saved:</h2>
+
+      <ul>
+      <% @pdp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :student_id %><br>
+    <%= f.select :student_id, Student.all.collect { |s| [ s.full_name, s.id ] } %>
+  </div>
+  <div class="field">
+    <%= f.label :appointment %>
+    <%= f.datetime_select :appointment %>
+  </div>
+  <div class="field">
+    <%= f.label :acuity_id %>
+    <%= f.text_field :acuity_id %>
+  </div>
+  <div class="field">
+    <%= f.label :instructor_id %><br>
+    <%= f.select :instructor_id, Instructor.all.collect { |i| [ i.full_name, i.id ] } %>
+  </div>
+  <div class="field">
+    <%= f.label :review_student %><br>
+    <%= f.text_area :review_student, :size => "60%x20%" %>
+  </div>
+  <div class="field">
+    <%= f.label :review_staff %><br>
+    <%= f.text_area :review_staff, :size => "60%x10%" %>
+  </div>
+  <div class="field">
+    <%= f.label :preview_student %><br>
+    <%= f.text_area :preview_student, :size => "60%x20%" %>
+  </div>
+  <div class="field">
+    <%= f.label :preview_staff %><br>
+    <%= f.text_area :preview_staff, :size => "60%x10%" %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :scan %><br>
+    <%= f.file_field :scan %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

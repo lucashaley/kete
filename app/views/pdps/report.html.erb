@@ -1,0 +1,72 @@
+<% content_for :title do %>
+<%= @student.full_name %>: PDP Report
+<% end %>
+
+<div class="row">
+  <div class="large-12 columns">
+    <h4>Welcome to the PDP Report.</h4>
+    <h5>
+      This is your semesterly PDP - Personal Development Plan. It's your chance to reflect upon your work over the last semester, and to think ahead to the coming semester.
+    </h5>
+    <p>
+      The process goes like this: after you complete this form, your PDP staff member will read it, and both of you will get together at your appointment time and chat about it.
+    </p>
+    <p>
+      Please take some time to fill this out -- the more information you include, the better your conversation will be.
+    </p>
+  </div>
+</div>
+
+<%= form_for(@pdp) do |f| %>
+  <% if @pdp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pdp.errors.count, "error") %> prohibited this pdp from being saved:</h2>
+
+      <ul>
+      <% @pdp.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% f.hidden_field(:acuity_id, :value => params[:acuity_id]) %>
+
+<div class="row">
+  <div class="large-6 columns">
+    <h3>Review</h3>
+    <p>
+      This is where you let us know about how last semester (or college) went. What were the high points? What didn't go so well?
+    </p>
+  </div>
+
+  <div class="large-6 columns">
+    <h3>Preview</h3>
+    <p>
+      This is where you let us know what you're looking forward to.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.text_area :review_student, :size => "60%x20%" %>
+    </div>
+  </div>
+
+  <div class="large-6 columns">
+    <div class="field">
+      <%= f.text_area :preview_student, :size => "60%x20%" %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 large-offset-6 columns">
+    <div class="actions">
+      <%= f.submit class: 'button postfix' %>
+    </div>
+  </div>
+</div>
+<% end %>

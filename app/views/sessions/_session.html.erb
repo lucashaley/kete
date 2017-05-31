@@ -1,0 +1,11 @@
+<li>
+<div class="card">
+  <div class="card-divider">
+    <%= session.day_of_week %>
+  </div>
+  <div class="card-section">
+    <h4><%= session.time_start.strftime("%I:%M %p") %> - <%= session.time_end.strftime("%I:%M %p") %></h4>
+    <%= session.lab.name %>
+  </div>
+</div>
+</li>

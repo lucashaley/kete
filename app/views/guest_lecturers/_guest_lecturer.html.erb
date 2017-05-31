@@ -1,0 +1,17 @@
+<li>
+<div class="card">
+  <div class="card-divider">
+
+  </div>
+  <div class="card-image">
+    <%= image_tag(guest_lecturer.image_url(:thumb).to_s) %>
+  </div>
+  <div class="card-title">
+    <%= link_to guest_lecturer.full_name, guest_lecturer %>
+  </div>
+  <div class="card-section">
+    <p><%= mail_to guest_lecturer.email %></p>
+    <a href="https://www.facebook.com/"><i class="fi-social-facebook"></i></a>
+  </div>
+</div>
+</li>

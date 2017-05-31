@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h2>
+  Create PDP for <%= @student.first_name %> <%= @student.last_name %></strong>
+</h2>
+
+<%= form_for([@student, @student.pdps.build]) do |f| %>
+  <div class="field">
+    <%= f.label :review_student %><br>
+    <%= f.text_area :review_student, :size => "60%x20%" %>
+  </div>
+  <div class="field">
+    <%= f.label :review_staff %><br>
+    <%= f.text_area :review_staff, :size => "60%x10%" %>
+  </div>
+  <div class="field">
+    <%= f.label :preview_student %><br>
+    <%= f.text_area :preview_student, :size => "60%x20%" %>
+  </div>
+  <div class="field">
+    <%= f.label :preview_staff %><br>
+    <%= f.text_area :preview_staff, :size => "60%x10%" %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_area :notes %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

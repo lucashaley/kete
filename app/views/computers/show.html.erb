@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Model:</strong>
+  <%= sprintf '%06d', @computer.id %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @computer.model %>
+</p>
+
+<p>
+  <strong>Operating System:</strong>
+  <%= @computer.operating_system %>
+</p>
+
+<p>
+  <strong>Date of Purchase:</strong>
+  <%= @computer.date_of_purchase %>
+</p>
+
+<p>
+  <strong>Lab:</strong>
+  <%= @computer.lab.name %>
+</p>
+
+<%= link_to 'Edit', edit_computer_path(@computer) %> |
+<%= link_to 'Back', computers_path %>

@@ -1,0 +1,13 @@
+<% content_for :title do %>
+Labs
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+<%= render @labs %>
+</ul>
+
+<br>
+
+<%= link_to 'New Lab', new_lab_path %>

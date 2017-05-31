@@ -1,0 +1,14 @@
+<%# add navigation links to this file %>
+<li><%= link_to 'Instructors', instructors_path %></li>
+<li><%= link_to 'Students', students_path %></li>
+<li><%= link_to 'Course List', courses_path %></li>
+<li><%= link_to 'Guest Lecturers', guest_lecturers_path %></li>
+<li><%= link_to 'Guest Lecturer Visits', guest_visits_path %></li>
+<li class="has-dropdown not-click">
+  <a href="#">Misc</a>
+  <ul class="dropdown">
+    <li><%= link_to 'PDPs', pdps_path %></li>
+    <li><%= link_to 'Semester Offerings', offerings_path %></li>
+    <li><%= link_to 'Labs', labs_path %></li>
+  </ul>
+</li>

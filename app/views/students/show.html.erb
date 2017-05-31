@@ -1,0 +1,99 @@
+<% content_for :title do %>
+<%= @student.id_name %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Contact Details</h4>
+          </div>
+          <div class="panel-section">
+            <strong>Email:</strong> <%= mail_to @student.email %>
+            <br />
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Issues</h4>
+          </div>
+          <div class="panel-button">
+            <%= link_to "Create New Issue", new_student_issue_path(@student) %>
+          </div>
+          <ul class="boxlist">
+            <%= render partial: "issues/issue_list", collection: @student.issues, as: :issue %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns">
+
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>PDPs</h4>
+          </div>
+          <div class="panel-button">
+            <%= link_to "Create New PDP", new_student_pdp_path(@student) %>
+          </div>
+          <ul class="boxlist">
+            <%= render partial: "pdps/pdp_list", collection: @student.pdps, as: :pdp %>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= image_tag(@student.image_url.to_s, size: "300x300") %>
+
+<h4>Courses</h4>
+<ul>
+  <% @student.offerings.each do |offering| %>
+  <li><%= link_to "#{offering.semester.code}: #{offering.course.short_title}" %></li>
+  <% end %>
+</ul>
+
+<table>
+  <tr>
+    <th>Semester</th>
+    <% @semesters.each do |s| %>
+      <th><%= s.code %></th>
+    <% end %>
+  </tr>
+  <tr>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+
+<% @offerings.each do |e| %>
+  <li><%= e.code %>
+<% end %>
+
+<h4>PDPs</h4>
+<ol>
+  <% @student.pdps.each do |pdp| %>
+  <li>
+    <%= link_to pdp.appointment.strftime("%-d/%-m/%Y"), pdp_path(pdp) %>
+  </li>
+  <% end %>
+</ol>
+
+<%= link_to 'Edit', edit_student_path(@student) %> |
+<%= link_to 'Back', students_path %>

@@ -1,0 +1,146 @@
+<% content_for :title do %>
+<%= @course.code %>: <%= @course.title %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="row">
+      <div class="columns">
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Course Description</h4>
+          </div>
+          <div class="panel-section">
+            <%= @course.description %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns">
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Course Overview</h4>
+          </div>
+          <div class="panel-section">
+            <%= @course.overview %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="columns">
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Guest Lecturers</h4>
+          </div>
+          <div class="panel-section">
+            <ul>
+              <% @course.guest_visits.each do |visit| %>
+              <li><%= link_to visit.guest_lecturer.full_name, guest_lecturer_path(visit.guest_lecturer) %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="columns">
+      <div class="panel radius">
+        <div class="panel-title">
+          <h4>Offerings</h4>
+        </div>
+        <div class="panel-button">
+          <%= link_to "New Offering" %>
+        </div>
+        <div class="panel-section">
+          <ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-2">
+            <%= render @course.offerings %>
+          </ul>
+        </div>
+      </div>
+        <div class="panel radius">
+          <div class="panel-title">
+            <h4>Learning Outcomes</h4>
+          </div>
+          <div class="panel-section">
+            <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-1">
+              <%= render @course.outcomes %>
+            </ul>
+            <ul class="accordion" data-accordion>
+              <li data-no-turbolink class="accordion-navigation">
+                <a href="#panel1a"><h5>Add Outcome</h5></a>
+                <div id="panel1a" class="content">
+
+                  <%= form_for([@course, @course.outcomes.build]) do |f| %>
+                    <p>
+                      <%= f.label :order %><br>
+                      <%= f.number_field :order, min: 1 %>
+                    </p>
+                    <p>
+                      <%= f.label :text %><br>
+                      <%= f.text_area :text %>
+                    </p>
+                    <p>
+                      <%= f.label :profile %><br>
+                      <%= f.text_field :profile %>
+                    </p>
+                    <p>
+                      <%= f.label :criteria %><br>
+                      <%= f.text_area :criteria %>
+                    </p>
+                    <p>
+                      <%= f.submit %>
+                    </p>
+                  <% end %>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+
+    <h3>Lessons</h3>
+    <ol>
+      <% @course.lessons.each do |lesson| %>
+        <li value="<%= lesson.week %>">
+          <%= lesson.description %>
+        </li>
+      <% end %>
+    </ol>
+    <ul class="accordion" data-accordion>
+      <li data-no-turbolink class="accordion-navigation">
+        <a href="#panel1b"><h5>Add Lesson</h5></a>
+        <div id="panel1b" class="content">
+          <%= form_for([@course, @course.lessons.build]) do |f| %>
+            <p>
+              <%= f.label :title %><br>
+              <%= f.text_field :title %>
+            </p>
+            <p>
+              <%= f.label :week %><br>
+              <%= f.number_field :week, min: 1 %>
+            </p>
+            <p>
+              <%= f.label :description %><br>
+              <%= f.text_area :description %>
+            </p>
+            <p>
+              <%= f.label :rationale %><br>
+              <%= f.text_area :rationale %>
+            </p>
+            <p>
+              <%= f.submit %>
+            </p>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<%= link_to 'Edit', edit_course_path(@course) %> |
+<%= link_to 'Back', courses_path %>

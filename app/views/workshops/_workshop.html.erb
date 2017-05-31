@@ -1,0 +1,13 @@
+<li>
+<div class="card">
+  <div class="card-divider">
+    <%= link_to workshop.title, workshop %>
+    <a href="<%= workshop_path(workshop) %>"><span></span></a>
+  </div>
+  <div class="card-section">
+    <ul class="small-block-grid-1 medium-block-grid-3 large-block-grid-5">
+      <%= render workshop.offering.students %>
+    </ul>
+  </div>
+</div>
+</li>

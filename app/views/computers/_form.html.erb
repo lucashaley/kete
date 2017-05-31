@@ -1,0 +1,47 @@
+<%= form_for(computer) do |f| %>
+  <% if computer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(computer.errors.count, "error") %> prohibited this computer from being saved:</h2>
+
+      <ul>
+      <% computer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :its_code %>
+    <%= f.text_field :its_code %>
+  </div>
+
+  <div class="field">
+    <%= f.label :model %>
+    <%= f.text_field :model %>
+  </div>
+
+  <div class="field">
+    <%= f.label :operating_system %>
+    <%= f.text_field :operating_system %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_purchase %>
+    <%= f.date_select :date_of_purchase %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lab_id %><br>
+    <%= f.select :lab_id, Lab.all.collect { |l| [ l.name, l.id ] } %>
+  </div>
+<!--
+  <div class="field">
+    <%= f.label :software_packages_id %>
+    <%= f.text_field :software_packages_id %>
+  </div>
+ -->
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

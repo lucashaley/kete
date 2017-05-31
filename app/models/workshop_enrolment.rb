@@ -1,0 +1,2 @@
+class WorkshopEnrolment < ApplicationRecord
+end

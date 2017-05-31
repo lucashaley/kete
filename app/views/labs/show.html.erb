@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @lab.name %></h2>
+
+<h4>Computers</h4>
+<ul>
+  <%= render @lab.computers %>
+</ul>
+
+<%= link_to 'Edit', edit_lab_path(@lab) %> |
+<%= link_to 'Back', labs_path %>

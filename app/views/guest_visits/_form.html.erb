@@ -1,0 +1,88 @@
+<%= form_for(@guest_visit) do |f| %>
+  <% if @guest_visit.errors.any? %>
+    <div class="row">
+      <div class="large-12 columns">
+        <div id="error_explanation">
+          <h2><%= pluralize(@guest_visit.errors.count, "error") %> prohibited this guest lecture visit from being saved:</h2>
+
+          <ul>
+          <% @guest_visit.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="large-6 medium-6 columns">
+      <div class="panel radius">
+        <div class="panel-title">
+          <h4>Guest Lecturer</h4>
+        </div>
+        <div class="panel-section">
+          <div class="field">
+            <%= f.label :guest_lecturer_id %><br>
+            <%= f.select :guest_lecturer_id, GuestLecturer.all.collect { |gl| [ gl.full_name, gl.id ] } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="large-6 medium-6 columns">
+      <div class="panel radius">
+        <div class="panel-title">
+          <h4>Visit Details</h4>
+        </div>
+        <div class="panel-section">
+          <div class="field">
+            <%= f.label :course %><br>
+            <%= f.select :course_id, Course.all.collect { |c| [ c.code_short, c.id ] } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input type="text" class="span2" value="02-12-2017 12:05" id="dpt">
+<script>
+$(function(){
+  $('#dpt').fdatetimepicker({
+		format: 'mm-dd-yyyy hh:ii',
+		disableDblClickSelection: true,
+		pickTime: true
+	});
+});
+</script>
+
+  <div class="field">
+    <%= f.label :start %><br>
+    <%= f.datetime_select :start %>
+  </div>
+  <div class="field">
+    <%= f.label :end %><br>
+    <%= f.datetime_select :end %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :budget %><br>
+    <%= f.text_field :budget %>
+  </div>
+  <div class="field">
+    <%= f.label :parking_needed %><br>
+    <%= f.check_box :parking_needed %>
+  </div>
+  <div class="field">
+    <%= f.label :pl_approved %><br>
+    <%= f.check_box :pl_approved %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

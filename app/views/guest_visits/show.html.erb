@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Guest lecturer:</strong>
+  <%= @guest_visit.guest_lecturer %>
+</p>
+
+<p>
+  <strong>Start:</strong>
+  <%= @guest_visit.start %>
+</p>
+
+<p>
+  <strong>End:</strong>
+  <%= @guest_visit.end %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @guest_visit.type %>
+</p>
+
+<p>
+  <strong>Budget:</strong>
+  <%= @guest_visit.budget %>
+</p>
+
+<p>
+  <strong>Parking needed:</strong>
+  <%= @guest_visit.parking_needed %>
+</p>
+
+<p>
+  <strong>Pl approved:</strong>
+  <%= @guest_visit.pl_approved %>
+</p>
+
+<p>
+  <strong>Course:</strong>
+  <%= @guest_visit.course.code_short %>
+</p>
+
+<%= link_to 'Edit', edit_guest_visit_path(@guest_visit) %> |
+<%= link_to 'Back', guest_visits_path %>

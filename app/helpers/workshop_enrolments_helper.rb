@@ -1,0 +1,2 @@
+module WorkshopEnrolmentsHelper
+end

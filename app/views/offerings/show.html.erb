@@ -1,0 +1,91 @@
+<% content_for :title do %>
+<%= @offering.semester.code %>_<%= @offering.course.code %>: <%= @offering.course.short_title %>
+<% end %>
+<% content_for :subtitle do %>
+Coordinator: <%= link_to @offering.instructor.full_name, @offering.instructor %>
+<% end %>
+
+<p id="notice"><%= notice %></p>
+
+<h4><%= link_to 'Facebook Group', @offering.facebook_group %></h4>
+
+<p>
+  <strong>Lab:</strong>
+  <%= @offering.instructor.full_name %>
+</p>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Offering Details</h4>
+      </div>
+      <div class="panel-section">
+        <%= link_to 'Facebook Group', @offering.facebook_group %>
+      </div>
+    </div>
+  </div>
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Offering Admin</h4>
+      </div>
+      <div class="panel-section">
+        <%= form_for([@offering, @offering.enrolments.build]) do |f| %>
+          <%= fields_for @offering.enrolments do |enrolment| %>
+            <%= text_field_tag :massey_identification %>
+          <% end %>
+          <%= f.submit "Add Student", class: 'button postfix' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Students</h4>
+      </div>
+      <ul class="boxlist">
+        <%= render partial: "students/student_list", collection: @offering.students, as: :student %>
+      </ul>
+    </div>
+  </div>
+
+  <div class="large-6 medium-6 small-12 columns">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Workshops</h4>
+      </div>
+      <div class="panel-section">
+        <ul class="small-block-grid-1 medium-block-grid-1 large-block-grid-2">
+          <%= render @offering.workshops %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h4>Add Student</h4>
+<!-- <%= form_for(@offering) do |f| %>
+  <%= fields_for @offering.students do |student| %>
+    <p>
+      <%= student.label :massey_identification, 'Massey Id' %><br>
+      <%= text_field_tag :massey_identification %>
+    </p>
+  <% end %>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %> -->
+<%= form_for([@offering, @offering.enrolments.build]) do |f| %>
+  <%= fields_for @offering.enrolments do |enrolment| %>
+    <%= text_field_tag :massey_identification %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
+<%= link_to 'Edit', edit_offering_path(@offering) %> |
+<%= link_to 'Back', offerings_path %>

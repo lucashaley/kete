@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  day_of_week: MyString
+  time_start: 2017-04-07 21:11:28
+  time_end: 2017-04-07 21:11:28
+  lab: 
+  workshop: 
+
+two:
+  day_of_week: MyString
+  time_start: 2017-04-07 21:11:28
+  time_end: 2017-04-07 21:11:28
+  lab: 
+  workshop: 
