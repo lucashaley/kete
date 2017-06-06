@@ -2,6 +2,12 @@
 <%= @instructor.full_name %>
 <% end %>
 
+<% if @instructor.major.present? %>
+<% content_for :subtitle do %>
+Major Coordinator: <%= @instructor.major.title %>
+<% end %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="row">
