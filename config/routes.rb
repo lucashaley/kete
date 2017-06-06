@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :majors
   # resources :issues, only: [:show, :edit]
   resources :workshop_enrolments
   resources :sessions
@@ -30,6 +31,7 @@ Rails.application.routes.draw do
     end
   end
   resources :instructors do
+    resources :majors
     collection do
       get 'lookup'
     end
@@ -43,6 +45,7 @@ Rails.application.routes.draw do
     resources :issues, shallow: true
     resources :pdps do
       get 'review'
+      put 'new'
     end
   end
   # get 'students/:id/createPDP' => 'students#createPDP'
