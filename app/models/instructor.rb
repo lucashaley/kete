@@ -8,8 +8,9 @@ class Instructor < ApplicationRecord
   has_many :offerings
   has_many :pdps
   has_many :issues
+  has_one :major
 
   def self.search_by_full_name(search)
-    where("fisrt_name LIKE :search OR last_name LIKE :search", search: "%#{search}%")
+    where("first_name LIKE :search OR last_name LIKE :search", search: "%#{search}%")
   end
 end

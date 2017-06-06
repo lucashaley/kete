@@ -2,7 +2,7 @@ class InstructorsController < ApplicationController
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
   def index
-    @instructors = Instructor.all
+    @instructors = Instructor.order(:last_name)
   end
 
   def show
