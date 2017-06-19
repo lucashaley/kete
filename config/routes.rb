@@ -23,9 +23,7 @@ Rails.application.routes.draw do
   end
   resources :semesters
   resources :pdps do
-    get 'report', on: :new
     member do
-      get 'report'
       get 'review'
       patch 'review_complete'
     end
