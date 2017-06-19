@@ -1,6 +1,6 @@
 class PdpsController < ApplicationController
-  before_action :set_pdp, only: [:show, :edit, :update, :destroy, :review_complete]
-  before_action :set_student_pdp, only: [:review]
+  before_action :set_pdp, only: [:show, :edit, :update, :destroy, :review, :review_complete]
+  # before_action :set_student_pdp, only: [:review]
   # GET /pdps
   # GET /pdps.json
   def index
@@ -76,14 +76,8 @@ class PdpsController < ApplicationController
     end
   end
 
-  def report
-    @pdp = Pdp.new
-
-    @student = Student.find(params[:student_id])
-  end
-
   def review
-
+    @oldPDPs = Pdp.where student_id: @pdp.student_id
   end
 
   def review_complete
