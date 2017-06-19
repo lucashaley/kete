@@ -1,0 +1,61 @@
+<a href="#" data-reveal-id="modal_<%= pdp.id %>" class="radius button"><%= pdp.appointment.strftime("%-d/%-m/%Y") %></a>
+
+<div id="modal_<%= pdp.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="row">
+    <div class="panel radius">
+      <div class="panel-title">
+        <h4>Prior PDP: <%= pdp.appointment.strftime("%-d/%-m/%Y") %></h4>
+      </div>
+      <div class="panel-section">
+  <% if pdp.scan? %>
+        <embed src="<%= pdp.scan.url %>" width="630px" height="891px" type='application/pdf' />
+  <% else %>
+        <div class="row">
+          <div class="large-6 columns">
+            <div class="panel-title">
+              <h4>Review</h4>
+            </div>
+            <div class="panel-section">
+              <h5>Student Notes</h5>
+              <p>
+                <%= pdp.review_student %>
+              </p>
+              <h5>Staff Notes</h5>
+              <p>
+                <%= markdown(pdp.review_staff) %>
+              </p>
+            </div>
+          </div>
+          <div class="large-6 columns">
+            <div class="panel-title">
+              <h4>Preview</h4>
+            </div>
+            <div class="panel-section">
+              <h5>Student Notes</h5>
+              <p>
+                <%= pdp.preview_student %>
+              </p>
+              <h5>Staff Notes</h5>
+              <p>
+                <%= markdown(pdp.preview_staff) %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="columns">
+            <div class="panel-title">
+              <h4>Notes</h4>
+            </div>
+            <div class="panel-section">
+              <p>
+                <%= pdp.notes %>
+              </p>
+            </div>
+          </div>
+        </div>
+  <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@
     <%= link_to "#{course.code}: #{course.short_title}", course_path(course) %>
   </div>
   <div class="card-description">
-    <%= truncate(course.description, :length => 120, :separator => ' ') %>
+    <%= truncate(strip_tags(markdown(course.description)), :length => 120, :separator => ' ') %>
   </div>
   <hr>
   <div class="card-section">
