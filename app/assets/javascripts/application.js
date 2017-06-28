@@ -16,6 +16,7 @@
 //= require foundation
 //= require foundation-datetimepicker
 //= require_tree .
+//= require modernizr
 $(function() {
   $(document).foundation({
     accordion: {

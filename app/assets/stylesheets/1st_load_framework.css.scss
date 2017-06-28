@@ -172,10 +172,13 @@ h2 {
      make sure you have an empty gif */
   background-image: url('empty.gif');
 }
+.card.CMP {
+  background-color: #dfd;
+}
 .card-divider {
   position: relative;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   text-align: center;
   background-color: $line-color;
   color: $background-color;
@@ -205,6 +208,7 @@ h2 {
   font-size: 1.2rem;
   font-weight: 400;
   font-family: $sans-family;
+  height: 120px;
 }
 .card-title a {
   color: white !important;
@@ -285,4 +289,17 @@ ul.boxlist li a {
 .pdp-student {
   font-size: 1.1rem;
   color: #300;
+}
+
+.button {
+  background-color: $button-color;
+}
+.button:hover {
+  background-color: $button-hover-color;
+}
+.button a:visited {
+  color: $button-hover-color;
+}
+.switch input:checked + label {
+  background-color: $button-color;
 }
