@@ -30,6 +30,30 @@ PDP Review: <%= @pdp.student.full_name %>
     <p>
       During your conformed appointment with the student, please review their report, and add your responses.
     </p>
+    <p>
+      For your report, you may use <a href="#" data-reveal-id="markdown-reference">Markdown</a> to format your response.
+    </p>
+
+<div id="markdown-reference" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<pre>
+# Heading 1
+## Heading 2
+### Heading 3
+etc.
+
+**emphasis**
+__strong emphasis__
+
+* unordered list item
+* second list item
+
+1. ordered list item
+2. second list item
+
+--- horizontal line
+</pre>
+</div>
+
   </div>
 </div>
 

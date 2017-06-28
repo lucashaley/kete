@@ -77,7 +77,9 @@ class PdpsController < ApplicationController
   end
 
   def review
-    @oldPDPs = Pdp.where student_id: @pdp.student_id
+    # @oldPDPs = Pdp.where student_id: @pdp.student_id
+    # hell yeah this works
+    @oldPDPs = Pdp.where(student_id: @pdp.student_id).where.not(id: @pdp.id)
   end
 
   def review_complete

@@ -1,15 +1,24 @@
 <li>
-<div class="card">
+<div class="card <%= student.programme.abbreviation %>">
   <div class="card-divider">
-    <%= student.id %>
+    <%= student.programme.abbreviation %>
+    <% if student.major_id? %>: <%= student.major.title %><% end %>
   </div>
   <div class="card-image">
-    <%= link_to image_tag(student.image_url(:thumb).to_s), student %>
+    <% if student.image? %>
+      <%= link_to image_tag(student.image_url(:thumb).to_s), student %>
+    <% else %>
+      <%= image_tag "NoPhoto.png" %>
+    <% end %>
   </div>
   <div class="card-title">
     <%= link_to student.full_name, student %>
   </div>
   <div class="card-section">
+    <% if student.major_id? %>
+    <p><%= student.major.title %></p>
+    <% end %>
+    <p><%= student.id %></p>
     <p><%= mail_to student.email %></p>
     <a href="https://www.facebook.com/"><i class="fi-social-facebook"></i></a>
   </div>

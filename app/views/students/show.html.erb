@@ -86,14 +86,11 @@
   <li><%= e.code %>
 <% end %>
 
-<h4>PDPs</h4>
-<ol>
-  <% @student.pdps.each do |pdp| %>
-  <li>
-    <%= link_to pdp.appointment.strftime("%-d/%-m/%Y"), pdp_path(pdp) %>
-  </li>
-  <% end %>
-</ol>
+<%= @se.inspect %>
 
-<%= link_to 'Edit', edit_student_path(@student) %> |
-<%= link_to 'Back', students_path %>
+<div class="row">
+  <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns">
+    <%= link_to 'Edit', edit_student_path(@student), class: "tiny button radius" %>
+    <%= link_to 'Back', students_path, class: "tiny button radius" %>
+  </div>
+</div>

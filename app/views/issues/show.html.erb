@@ -4,18 +4,26 @@
 <% content_for :subtitle do %>
 With <%= @issue.instructor.full_name %>
 <% end %>
+
 <p id="notice"><%= notice %></p>
 
+<% if @issue.critical %>
+<div class="row">
+  <div class="columns">
+    <p style="font-weight: bold; font-size:1.2rem; color: red;">This is a critical issue.</p>
+  </div>
+</div>
+<% end %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @issue.content %>
-</p>
+<div class="row">
+  <div class="columns">
+    <%= markdown(@issue.content) %>
+  </div>
+</div>
 
-<p>
-  <strong>Critical:</strong>
-  <%= @issue.critical %>
-</p>
-
-<%= link_to 'Edit', edit_issue_path(@issue) %> |
-<%= link_to 'Back', student_path(@issue.student) %>
+<div class="row">
+  <div class="large-8 large-offset-2 medium-8 medium-offset-2 columns">
+    <%= link_to 'Edit', edit_issue_path(@issue), class: "tiny button radius" %>
+    <%= link_to 'Back', student_path(@issue.student), class: "tiny button radius" %>
+  </div>
+</div>

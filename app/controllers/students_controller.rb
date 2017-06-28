@@ -13,6 +13,8 @@ class StudentsController < ApplicationController
     @offerings = Course.joins(offerings: :course)
     # @semesters = Semester.joins(:offerings => :course).distinct
     @semesters = Semester.joins(offerings: :semester).distinct.order(:code)
+
+    @se = @student.enrolments
   end
 
   # GET /students/new

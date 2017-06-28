@@ -8,6 +8,9 @@ class Student < ApplicationRecord
   has_many :offerings, through: :enrolments
   has_many :issues, :dependent => :destroy
 
+  belongs_to :programme
+  belongs_to :major
+
   accepts_nested_attributes_for :issues, :allow_destroy => true
 
   def id_name
