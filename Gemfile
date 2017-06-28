@@ -56,3 +56,4 @@ gem 'foundation-rails', '~> 5.5'
 gem 'foundation-datetimepicker-rails'
 gem 'carrierwave'
 gem 'mini_magick' # For different versions of an image
+gem 'redcarpet', '~> 3.0.0'
