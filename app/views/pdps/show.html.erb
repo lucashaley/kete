@@ -34,7 +34,9 @@ With <%= @pdp.instructor.full_name %> on <%= @pdp.appointment.strftime("%-d/%-m/
             <h4>Staff Review</h4>
           </div>
           <div class="panel-section">
-            <%= @pdp.review_staff %>
+            <% if @pdp.review_staff? %>
+            <%= markdown(@pdp.review_staff) %>
+            <% end %>
           </div>
         </div>
 
@@ -60,7 +62,9 @@ With <%= @pdp.instructor.full_name %> on <%= @pdp.appointment.strftime("%-d/%-m/
             <h4>Staff Preview</h4>
           </div>
           <div class="panel-section">
-            <%= @pdp.preview_staff %>
+            <% if @pdp.preview_staff? %>
+            <%= markdown(@pdp.preview_staff) %>
+            <% end %>
           </div>
         </div>
 
